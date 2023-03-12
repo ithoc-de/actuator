@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: ingress-controller
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: localhost
+    - host: integration
       http:
         paths:
           - path: / # /banana
@@ -15,4 +15,4 @@ spec:
               service:
                 name: actuator-service # banana-service
                 port:
-                  number: 7003 # 5678
+                  number: 7003

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: actuator-container # apple-app
-          image: olihock/actuator:1.0.0 # hashicorp/http-echo
+          image: olihock/actuator:1.0.1 # hashicorp/http-echo
           ports:
             - containerPort: 7003
 

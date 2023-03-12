@@ -1,0 +1,26 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: actuator-api # apple-app
+  labels:
+    app: actuator-label # apple
+spec:
+  containers:
+    - name: actuator-container # apple-app
+      image: olihock/actuator:1.0.0 # hashicorp/http-echo
+      ports:
+        - containerPort: 7003
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: actuator-service # apple-service
+spec:
+  type: NodePort
+  selector:
+    app: actuator-label # apple
+  ports:
+    - port: 7003 # Default port for image
+      targetPort: 7003

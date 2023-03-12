@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-controller
+  name: integration
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -9,10 +9,31 @@ spec:
     - host: integration
       http:
         paths:
-          - path: / # /banana
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: actuator-service # banana-service
+                name: actuator
                 port:
                   number: 7003
+    - host: ithoc
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: actuator
+                port:
+                  number: 7003
+    - host: integ.dynv6.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: actuator
+                port:
+                  number: 7003
+

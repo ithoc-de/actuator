@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: actuator-deployment # apple-app
+  name: actuator
   labels:
-    app: actuator-label # apple
+    app: actuator
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: actuator-label
+      app: actuator
   template:
     metadata:
       labels:
-        app: actuator-label
+        app: actuator
     spec:
       containers:
-        - name: actuator-container # apple-app
-          image: olihock/actuator:1.0.1 # hashicorp/http-echo
+        - name: actuator
+          image: olihock/actuator:1.0.1
           ports:
             - containerPort: 7003
 
@@ -25,11 +25,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: actuator-service # apple-service
+  name: actuator
 spec:
   type: LoadBalancer
   selector:
-    app: actuator-label # apple
+    app: actuator
   ports:
-    - port: 7003 # Default port for image
+    - port: 7003 
       targetPort: 7003

@@ -9,7 +9,7 @@ public class PingController {
 
     @GetMapping("/")
     public String root() {
-        return SpringVersion.getVersion();
+        return SpringVersion.getVersion() + System.getProperty("line.separator");
     }
 
 }
